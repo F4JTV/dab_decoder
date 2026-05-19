@@ -11,7 +11,7 @@ it through a clean SDR++ UI with a 2.048 MHz VFO, service list, audio
 routing to the SDR++ sink manager, and dynamic label / signal quality
 indicators.
 
-![placeholder for screenshot]
+![Alt text](sdrpp_dab_decoder.png)
 
 ## Features
 
