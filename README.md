@@ -67,7 +67,7 @@ cd SDRPlusPlus
 
 # 3. Drop in this module
 rm -rf decoder_modules/dab_decoder
-tar xzf /path/to/dab_decoder.tar.gz -C decoder_modules/
+git clone https://github.com/F4JTV/dab_decoder.git
 
 # 4. Clone the welle.io backend INSIDE the module directory
 cd decoder_modules/dab_decoder
