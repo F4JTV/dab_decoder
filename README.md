@@ -94,53 +94,6 @@ if(OPT_BUILD_DAB_DECODER)
 endif()
 ```
 
-## Building on Windows 11
-
-Prerequisites: Visual Studio 2022 (Desktop C++ workload), CMake ≥ 3.20,
-[vcpkg](https://github.com/microsoft/vcpkg), Git for Windows.
-
-```powershell
-# 1. Set up vcpkg if needed
-git clone https://github.com/microsoft/vcpkg.git C:\vcpkg
-cd C:\vcpkg
-.\bootstrap-vcpkg.bat
-
-# 2. Install DAB dependencies (plus SDR++ standard ones)
-.\vcpkg install faad2:x64-windows mpg123:x64-windows fftw3:x64-windows `
-                zstd:x64-windows volk:x64-windows glfw3:x64-windows
-
-# 3. Clone SDR++
-cd C:\
-git clone https://github.com/AlexandreRouma/SDRPlusPlus.git
-cd SDRPlusPlus
-
-# 4. Extract the module
-Remove-Item -Recurse decoder_modules\dab_decoder
-tar -xzf C:\Downloads\dab_decoder.tar.gz -C decoder_modules\
-
-# 5. Clone the welle.io backend
-cd decoder_modules\dab_decoder
-git clone --depth 1 https://github.com/AlbrechtL/welle.io.git
-cd ..\..
-
-# 6. Configure + build (use the Developer PowerShell for VS 2022)
-mkdir build
-cd build
-cmake .. -G "Visual Studio 17 2022" -A x64 `
-    -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake `
-    -DOPT_BUILD_DAB_DECODER=ON `
-    -DCMAKE_BUILD_TYPE=Release
-cmake --build . --config Release --target dab_decoder -- /m
-```
-
-The output `dab_decoder.dll` will be in
-`build\decoder_modules\dab_decoder\Release\`.
-Copy it to the `modules\` folder next to `sdrpp.exe`.
-
-**Don't forget** to also copy the runtime DLLs next to `sdrpp.exe`
-(vcpkg installs them into `installed\x64-windows\bin\`):
-`libfaad.dll`, `libmpg123-0.dll`, `fftw3f.dll`.
-
 ## Usage
 
 1. Launch SDR++
