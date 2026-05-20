@@ -66,11 +66,12 @@ git clone https://github.com/AlexandreRouma/SDRPlusPlus.git
 cd SDRPlusPlus
 
 # 3. Drop in this module
-rm -rf decoder_modules/dab_decoder
+cd ./decoder_modules
+rm -rf ./dab_decoder
 git clone https://github.com/F4JTV/dab_decoder.git
 
 # 4. Clone the welle.io backend INSIDE the module directory
-cd decoder_modules/dab_decoder
+cd ./dab_decoder
 git clone --depth 1 https://github.com/AlbrechtL/welle.io.git
 cd ../..
 
