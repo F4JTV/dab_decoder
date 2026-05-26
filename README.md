@@ -72,7 +72,7 @@ git clone https://github.com/F4JTV/dab_decoder.git
 
 # 4. Clone the welle.io backend INSIDE the module directory
 cd ./dab_decoder
-git clone --depth 1 https://github.com/AlbrechtL/welle.io.git
+git clone --depth 1 https://github.com/F4JTV/welle.io
 cd ../..
 
 # 5. Build
